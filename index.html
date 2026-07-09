@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>S.B. Plattenleger GmbH — Platten- & Fliesenarbeiten Luzern</title>
+<meta name="description" content="Premium Platten- und Fliesenarbeiten für Privatpersonen, Bauherren und Architekten in Luzern. Plattenarbeiten, die sich auch in 10 Jahren noch richtig anfühlen.">
+<meta property="og:title" content="S.B. Plattenleger GmbH — Platten- & Fliesenarbeiten Luzern">
+<meta property="og:description" content="Premium Platten- und Fliesenarbeiten in Luzern und Umgebung. Präzises Handwerk, ehrliche Beratung.">
+<meta property="og:image" content="https://www.sb-plattenleger.ch/assets/wand/w_001.webp">
+<meta property="og:type" content="website">
+<link rel="icon" type="image/png" href="assets/img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="preload" as="image" href="assets/img/hero.jpg">
+<link rel="preload" as="image" href="assets/wand/w_001.webp" media="(min-width: 769px)">
+<link rel="preload" as="image" href="assets/wand-sm/w_001.webp" media="(max-width: 768px)">
+<noscript><style>[data-rv],.hero-el,.hl-in{opacity:1!important;transform:none!important}.statement-line .w{opacity:1!important;transform:none!important}.tl-content,.tl-node b{opacity:1!important}.tl-node .dia{transform:rotate(45deg) scale(1)!important}</style></noscript>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"LocalBusiness","name":"SB Plattenleger GmbH","address":{"@type":"PostalAddress","streetAddress":"Hellbühlstrasse 53","postalCode":"6102","addressLocality":"Malters","addressCountry":"CH"},"telephone":"+41791977635","email":"info@sb-plattenleger.ch","url":"https://www.sb-plattenleger.ch","areaServed":"Luzern","description":"Platten- und Fliesenarbeiten für Privatpersonen, Bauherren und Architekten in Luzern."}
+</script>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Zum Inhalt springen</a>
+
+<!-- ===== AMBIENT BACKGROUND ===== -->
+<div class="ambient" aria-hidden="true">
+  <div class="blob blob-a"></div>
+  <div class="blob blob-b"></div>
+  <div class="raster"></div>
+</div>
+
+<!-- ===== SCROLL PROGRESS ===== -->
+<div class="progress" aria-hidden="true"><span id="progressBar"></span></div>
+
+<!-- ===== HEADER ===== -->
+<header id="header">
+  <div class="wrap nav">
+    <a href="#top" class="logo" aria-label="S.B. Plattenleger Startseite">
+      <img src="https://www.sb-plattenleger.ch/wp-content/uploads/2023/03/sb-logo-sw.webp" alt="S.B. Plattenleger GmbH" width="150" height="44">
+    </a>
+    <nav aria-label="Hauptnavigation">
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#leistungen">Leistungen</a></li>
+        <li><a href="#ablauf">Ablauf</a></li>
+        <li><a href="#referenzen">Referenzen</a></li>
+        <li><a href="#stellen">Stellen</a></li>
+        <li><a href="#ueber">Über uns</a></li>
+        <li class="nav-mobile-cta"><a href="#offerte">Offerte anfordern</a></li>
+      </ul>
+    </nav>
+    <div class="nav-cta">
+      <a href="tel:0791977635" class="nav-phone">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        079 197 76 35
+      </a>
+      <a href="#offerte" class="btn btn-gold btn-sm">Offerte anfordern</a>
+      <button class="burger" id="burger" aria-label="Menü öffnen" aria-expanded="false" aria-controls="navLinks"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<span id="top"></span>
+<main id="main">
+
+<!-- ===== HERO (Scroll-Film: Scrollen steuert die Frames) ===== -->
+<div class="film-wrap" id="filmWrap">
+<section class="hero" id="hero">
+  <div class="hero-bg" aria-hidden="true">
+    <img src="assets/img/hero.jpg" alt="" width="2752" height="1536" fetchpriority="high">
+    <canvas id="filmCanvas" class="film-canvas"></canvas>
+  </div>
+  <div class="hero-scrim" aria-hidden="true"></div>
+  <div class="hero-lines" aria-hidden="true"><span class="hv hv-a"></span><span class="hv hv-b"></span></div>
+  <div class="dia-field" aria-hidden="true">
+    <span class="dia-o d-1"></span>
+    <span class="dia-o d-2"></span>
+    <span class="dia-o d-3"></span>
+  </div>
+
+  <div class="wrap hero-inner">
+    <p class="eyebrow hero-el e-1"><span class="rule"></span>S.B. Plattenleger · Malters, Luzern</p>
+    <h1 class="hero-h1">
+      <span class="hl"><span class="hl-in h-1">Plattenarbeiten,</span></span>
+      <span class="hl"><span class="hl-in h-2">die <em>bleiben.</em></span></span>
+    </h1>
+    <p class="lead hero-el e-2">Präzises Handwerk für Privatpersonen, Bauherren und Architekten —<br class="bp-hide"> vom ersten Gespräch bis zur sauberen Übergabe.</p>
+    <div class="hero-actions hero-el e-3">
+      <a href="#offerte" class="btn btn-gold">Offerte anfordern <span class="arrow" aria-hidden="true">→</span></a>
+      <a href="#referenzen" class="btn btn-ghost">Arbeiten ansehen</a>
+    </div>
+    <ul class="trust-strip hero-el e-4" aria-label="Qualitätsmerkmale">
+      <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Eidg. Fähigkeitszeugnis</li>
+      <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Festpreis-Offerte</li>
+      <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="10" r="3"/><path d="M12 2a8 8 0 0 0-8 8c0 5.4 8 12 8 12s8-6.6 8-12a8 8 0 0 0-8-8z"/></svg>Region Luzern</li>
+    </ul>
+  </div>
+
+  <div class="hero-hint hero-el e-5" aria-hidden="true"><span class="hint-line"></span><span>Scrollen</span></div>
+</section>
+</div>
+
+<!-- ===== STATEMENT ===== -->
+<section class="statement">
+  <div class="wrap">
+    <p class="statement-line" id="statementLine">Platten sind <em>endgültig</em> — genau das macht sie so <em>wertvoll.</em></p>
+    <div class="stakes-grid">
+      <div class="stake-card" data-rv>
+        <div class="rk"><span class="diamond" aria-hidden="true"></span>Keine zweite Chance</div>
+        <h3>Einmal entscheiden</h3>
+        <p>Stimmen Proportionen, Fugen oder Linien nicht, lassen sie sich nicht nachjustieren. Man lebt dann jahrelang damit.</p>
+      </div>
+      <div class="stake-card" data-rv data-d="1">
+        <div class="rk"><span class="diamond" aria-hidden="true"></span>Klarheit zuerst</div>
+        <h3>Sicherheit vor Umsetzung</h3>
+        <p>Wir führen Sie strukturiert durch Material, Format und Detail — Sie wissen vorher, warum eine Lösung funktioniert.</p>
+      </div>
+      <div class="stake-card" data-rv data-d="2">
+        <div class="rk"><span class="diamond" aria-hidden="true"></span>Ruhe im Ergebnis</div>
+        <h3>Kein Rätselraten</h3>
+        <p>So entsteht kein Bruch, sondern ein Raum, der sich richtig anfühlt — heute und in zehn Jahren.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== LEISTUNGEN ===== -->
+<section class="section" id="leistungen">
+  <div class="wrap">
+    <header class="sec-head" data-rv>
+      <p class="eyebrow"><span class="rule"></span>Leistungen</p>
+      <h2>Drei Leistungen.<br><em>Ein Ziel.</em></h2>
+      <p class="lead">Vom ersten Neubau-Plan bis zur durchdachten Sanierung — alles aus einer präzisen Hand.</p>
+    </header>
+    <div class="services">
+      <article class="svc" data-rv>
+        <div class="svc-img img-grade">
+          <img src="https://www.sb-plattenleger.ch/wp-content/uploads/2026/01/20251114_145333.webp" alt="Neubau mit Grossformat-Platten" loading="lazy" width="800" height="600">
+          <span class="svc-num" aria-hidden="true"><b>01</b></span>
+        </div>
+        <div class="svc-body">
+          <h3>Neubau &amp; Erstbezug</h3>
+          <p>Formate, Fugen und Übergänge von Anfang an mitgedacht — damit am Ende alles so wirkt, wie es geplant war.</p>
+          <a href="#offerte" class="tlink">Projekt besprechen <span class="arrow" aria-hidden="true">→</span></a>
+        </div>
+      </article>
+      <article class="svc" data-rv data-d="1">
+        <div class="svc-img img-grade">
+          <img src="https://www.sb-plattenleger.ch/wp-content/uploads/2026/01/20251114_145621.webp" alt="Renovation eines Wohnraums" loading="lazy" width="800" height="600">
+          <span class="svc-num" aria-hidden="true"><b>02</b></span>
+        </div>
+        <div class="svc-body">
+          <h3>Renovation &amp; Sanierung</h3>
+          <p>Neues und Bestehendes, die zusammenpassen. Wir entwickeln Lösungen, die sich logisch einfügen und hochwertig wirken.</p>
+          <a href="#offerte" class="tlink">Projekt besprechen <span class="arrow" aria-hidden="true">→</span></a>
+        </div>
+      </article>
+      <article class="svc" data-rv data-d="2">
+        <div class="svc-img img-grade">
+          <img src="https://www.sb-plattenleger.ch/wp-content/uploads/2026/01/IMG_20251114_150815_449.jpg" alt="Beratung zu Material und Verlegung" loading="lazy" width="800" height="600">
+          <span class="svc-num" aria-hidden="true"><b>03</b></span>
+        </div>
+        <div class="svc-body">
+          <h3>Beratung &amp; sicher entscheiden</h3>
+          <p>Platten und Details lassen sich nicht austauschen, wenn sie verbaut sind. Wir helfen Ihnen, richtig zu entscheiden.</p>
+          <a href="#offerte" class="tlink">Projekt besprechen <span class="arrow" aria-hidden="true">→</span></a>
+        </div>
+      </article>
+    </div>
+    <p class="svc-extra" data-rv>Ebenfalls für Sie da: <b>Naturstein</b> · <b>Mosaikfliesen</b> · <b>Trockeneisreinigung</b></p>
+  </div>
+</section>
+
+<!-- ===== ABLAUF ===== -->
+<section class="section" id="ablauf">
+  <div class="wrap">
+    <header class="sec-head" data-rv>
+      <p class="eyebrow"><span class="rule"></span>Der Ablauf</p>
+      <h2>Ein klarer Weg, der Fehler<br>von Anfang an <em>verhindert.</em></h2>
+      <p class="lead">Vier Schritte — von der ersten Idee bis zur sauberen Übergabe. Sie wissen jederzeit, wo Ihr Projekt steht.</p>
+    </header>
+    <div class="timeline" id="ablaufTimeline" data-rv>
+      <span class="tl-corner tl-tl" aria-hidden="true"></span><span class="tl-corner tl-br" aria-hidden="true"></span>
+      <div class="tl-steps">
+        <div class="tl-step">
+          <div class="tl-node" aria-hidden="true"><span class="dia"></span><b>1</b></div>
+          <div class="tl-content">
+            <span class="lab">Schritt 01</span>
+            <h3>Beratung</h3>
+            <p>Wir hören zu und verstehen, wie der Raum langfristig wirken soll.</p>
+          </div>
+        </div>
+        <div class="tl-step">
+          <div class="tl-node" aria-hidden="true"><span class="dia"></span><b>2</b></div>
+          <div class="tl-content">
+            <span class="lab">Schritt 02</span>
+            <h3>Planung</h3>
+            <p>Materialien, Formate und Details — nachvollziehbar und dauerhaft stimmig.</p>
+          </div>
+        </div>
+        <div class="tl-step">
+          <div class="tl-node" aria-hidden="true"><span class="dia"></span><b>3</b></div>
+          <div class="tl-content">
+            <span class="lab">Schritt 03</span>
+            <h3>Umsetzung</h3>
+            <p>Die Verlegung erfolgt exakt nach Plan — präzise und ruhig.</p>
+          </div>
+        </div>
+        <div class="tl-step">
+          <div class="tl-node" aria-hidden="true"><span class="dia"></span><b>4</b></div>
+          <div class="tl-content">
+            <span class="lab">Schritt 04</span>
+            <h3>Übergabe</h3>
+            <p>Sie übernehmen einen fertigen Raum — durchdacht und sauber ausgeführt.</p>
+          </div>
+        </div>
+        <div class="tl-line" aria-hidden="true"><span class="fill"></span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== REFERENZEN ===== -->
+<section class="section" id="referenzen">
+  <div class="wrap">
+    <header class="sec-head" data-rv>
+      <p class="eyebrow"><span class="rule"></span>Referenzen</p>
+      <h2>Arbeiten, die für sich <em>sprechen.</em></h2>
+      <p class="lead">Einblicke in unsere Projekte aus Luzern und Umgebung.</p>
+    </header>
+    <div class="showcase" id="refShowcase" data-rv>
+      <div class="sc-track" id="scTrack" tabindex="0" aria-label="Referenzprojekte — mit Pfeiltasten oder Wischen blättern">
+        <article class="sc-slide">
+          <figure class="sc-media img-grade">
+            <img src="https://www.sb-plattenleger.ch/wp-content/uploads/2026/01/IMG-20251114-WA0000.webp" alt="Dunkle Mosaikwand, präzise verlegt" loading="lazy" width="900" height="1200">
+          </figure>
+          <div class="sc-info">
+            <span class="tag">Sanierung</span>
+            <h3>Mosaikwand im Wohnbereich</h3>
+            <p>Dunkles Mosaik als ruhige, edle Fläche — jede Fugenlinie sitzt.</p>
+            <button class="sc-zoom" type="button" aria-label="Projekt gross ansehen">Gross ansehen <span class="arrow" aria-hidden="true">→</span></button>
+          </div>
+        </article>
+        <article class="sc-slide">
+          <figure class="sc-media img-grade">
+            <img src="https://www.sb-plattenleger.ch/wp-content/uploads/2026/01/IMG-20251114-WA0005.webp" alt="Bad in Naturstein-Optik" loading="lazy" width="800" height="600">
+          </figure>
+          <div class="sc-info">
+            <span class="tag">Renovation</span>
+            <h3>Bad in Naturstein-Optik</h3>
+            <p>Grossformatige Platten, minimale Fugen — ein Bad wie aus einem Guss.</p>
+            <button class="sc-zoom" type="button" aria-label="Projekt gross ansehen">Gross ansehen <span class="arrow" aria-hidden="true">→</span></button>
+          </div>
+        </article>
+        <article class="sc-slide">
+          <figure class="sc-media img-grade">
+            <img src="https://www.sb-plattenleger.ch/wp-content/uploads/2026/01/IMG_20250717_190921_077.jpg" alt="Wandplatten im Aussenbereich, verlegt mit Nivelliersystem" loading="lazy" width="800" height="600">
+          </figure>
+          <div class="sc-info">
+            <span class="tag">Neubau</span>
+            <h3>Wandverkleidung im Detail</h3>
+            <p>Riemchen-Platten mit Nivelliersystem — Präzision, die man sieht.</p>
+            <button class="sc-zoom" type="button" aria-label="Projekt gross ansehen">Gross ansehen <span class="arrow" aria-hidden="true">→</span></button>
+          </div>
+        </article>
+        <article class="sc-slide">
+          <figure class="sc-media img-grade">
+            <img src="https://www.sb-plattenleger.ch/wp-content/uploads/2026/01/Screenshot_20250530_221127_Instagram1.webp" alt="Fassade mit Platten" loading="lazy" width="800" height="600">
+          </figure>
+          <div class="sc-info">
+            <span class="tag">Neubau</span>
+            <h3>Fassadenprojekt</h3>
+            <p>Platten an der Fassade — wetterfest, exakt, dauerhaft schön.</p>
+            <button class="sc-zoom" type="button" aria-label="Projekt gross ansehen">Gross ansehen <span class="arrow" aria-hidden="true">→</span></button>
+          </div>
+        </article>
+      </div>
+      <div class="sc-ui">
+        <div class="sc-count" aria-hidden="true"><b id="scCur">01</b><span>&nbsp;/&nbsp;04</span></div>
+        <div class="sc-dots" id="scDots" aria-hidden="true"></div>
+        <div class="sc-nav">
+          <button class="sc-btn" id="scPrev" type="button" aria-label="Vorheriges Projekt"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5m7-7-7 7 7 7"/></svg></button>
+          <button class="sc-btn" id="scNext" type="button" aria-label="Nächstes Projekt"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-7-7 7 7-7 7"/></svg></button>
+        </div>
+      </div>
+    </div>
+    <a class="ig-band" href="https://www.instagram.com/s.b.plattenleger/" target="_blank" rel="noopener" data-rv data-d="1">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+      <span>Laufend neue Projekte auf Instagram</span>
+      <span class="tlink">Profil öffnen <span class="arrow" aria-hidden="true">→</span></span>
+    </a>
+  </div>
+</section>
+
+<!-- ===== TRUST ===== -->
+<section class="section trust">
+  <div class="wrap">
+    <div class="stats" data-rv>
+      <div class="stat"><div class="n" data-count="74" data-suffix="+">0</div><div class="l">Projekte realisiert</div></div>
+      <div class="stat"><div class="n" data-count="100" data-suffix="%">0</div><div class="l">Festpreis — ohne Überraschungen</div></div>
+      <div class="stat"><div class="n" data-count="3" data-suffix="+">0</div><div class="l">Jahre Erfahrung</div></div>
+    </div>
+    <div class="level-wrap" data-rv aria-hidden="true">
+      <svg class="level" viewBox="0 0 220 30" width="220" height="30" fill="none">
+        <rect x="1" y="1" width="218" height="28" rx="14" class="lv-body"/>
+        <line x1="92" y1="5" x2="92" y2="25" class="lv-mark"/>
+        <line x1="128" y1="5" x2="128" y2="25" class="lv-mark"/>
+        <ellipse cx="110" cy="15" rx="14" ry="7" class="lv-bubble"/>
+      </svg>
+    </div>
+    <ul class="trust-row" data-rv data-d="1" aria-label="Zertifikate und Garantien">
+      <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Plattenleger/in EFZ</li>
+      <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 3 7v6c0 5 9 9 9 9s9-4 9-9V7l-9-5z"/></svg>Betriebshaftpflicht</li>
+      <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Festpreis &amp; Garantie</li>
+      <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="10" r="3"/><path d="M12 2a8 8 0 0 0-8 8c0 5.4 8 12 8 12s8-6.6 8-12a8 8 0 0 0-8-8z"/></svg>Malters · Region Luzern</li>
+    </ul>
+    <blockquote class="quote" data-rv data-d="2">
+      <p>„Saubere, präzise Arbeit und eine Beratung, die wirklich mitdenkt. Das Ergebnis sieht heute noch aus wie am ersten Tag."</p>
+      <footer>Privatkundin · Luzern</footer>
+    </blockquote>
+  </div>
+</section>
+
+<!-- ===== STELLEN ===== -->
+<section class="section" id="stellen">
+  <div class="wrap jobs">
+    <div data-rv>
+      <p class="eyebrow"><span class="rule"></span>Stellenangebote</p>
+      <h2>Wir suchen Plattenleger<br>mit <em>Anspruch.</em></h2>
+      <p class="lead">Sie arbeiten präzise, denken mit und wollen Ergebnisse, auf die man stolz ist? Dann passen Sie zu uns. Festanstellung in einem Team, das Qualität ernst meint.</p>
+      <div class="btn-row">
+        <a href="mailto:info@sb-plattenleger.ch" class="btn btn-gold">Jetzt bewerben <span class="arrow" aria-hidden="true">→</span></a>
+        <a href="mailto:info@sb-plattenleger.ch" class="btn btn-ghost">Initiativ bewerben</a>
+      </div>
+    </div>
+    <div class="jobs-card" data-rv data-d="1">
+      <h3>Das bringen Sie mit</h3>
+      <ul>
+        <li><span class="diamond" aria-hidden="true"></span>Erfahrung im Verlegen von Keramik, Naturstein &amp; Mosaik</li>
+        <li><span class="diamond" aria-hidden="true"></span>Sinn für Präzision, Fugen und saubere Linien</li>
+        <li><span class="diamond" aria-hidden="true"></span>Zuverlässigkeit und Freude am Handwerk</li>
+        <li><span class="diamond" aria-hidden="true"></span>Führerausweis Kat. B von Vorteil</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ÜBER UNS ===== -->
+<section class="section" id="ueber">
+  <div class="wrap about">
+    <div data-rv>
+      <p class="eyebrow"><span class="rule"></span>Über uns</p>
+      <h2>Handwerk, das <em>hält.</em></h2>
+      <p>Wir sind ein Plattenleger-Betrieb aus Malters bei Luzern. Was uns antreibt, ist nicht die schnelle Arbeit, sondern das Ergebnis, das auch in zehn Jahren noch stimmt.</p>
+      <p>Für Privatpersonen, Bauherren und Architekten verbinden wir präzises Handwerk mit ehrlicher Beratung — vom ersten Gespräch bis zur Übergabe.</p>
+      <p class="sig">— Ihr Team von S.B. Plattenleger GmbH</p>
+    </div>
+    <div class="about-visual img-grade" data-rv data-d="1">
+      <img src="assets/img/work_wall.jpg" alt="SB Plattenleger Mitarbeiter verlegt dunkle Riemchen-Platten an einer Wand" loading="lazy" width="2752" height="1536" style="object-position:62% center">
+      <span class="frame" aria-hidden="true"></span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== OFFERTE ===== -->
+<section class="section" id="offerte">
+  <div class="wrap offer">
+    <div class="offer-side" data-rv>
+      <p class="eyebrow"><span class="rule"></span>Kostenlose Offerte</p>
+      <h2>Erzählen Sie uns von<br>Ihrem <em>Projekt.</em></h2>
+      <p class="lead">Schildern Sie Ihr Vorhaben in ein paar Sätzen. Wir melden uns, klären offene Fragen und zeigen Ihnen, wie sich Ihre Vorstellungen umsetzen lassen — unverbindlich.</p>
+      <div class="contact-alt">
+        <a href="tel:0791977635">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <span>079 197 76 35<span class="sub">Direkt anrufen</span></span>
+        </a>
+        <a href="https://wa.me/+41791977635" target="_blank" rel="noopener">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          <span>WhatsApp schreiben<span class="sub">Schnelle Antwort</span></span>
+        </a>
+      </div>
+    </div>
+    <div class="form-panel" data-rv data-d="1">
+      <form id="offerForm" novalidate>
+        <div class="field"><label for="f-name">Name</label><input id="f-name" type="text" name="name" autocomplete="name" placeholder="Ihr Name" required></div>
+        <div class="row2">
+          <div class="field"><label for="f-tel">Telefon</label><input id="f-tel" type="tel" name="tel" autocomplete="tel" placeholder="079 ..." required></div>
+          <div class="field"><label for="f-mail">E-Mail</label><input id="f-mail" type="email" name="mail" autocomplete="email" placeholder="name@mail.ch"></div>
+        </div>
+        <div class="field"><label for="f-art">Art des Projekts</label>
+          <select id="f-art" name="art"><option value="">Bitte wählen</option><option>Neubau &amp; Erstbezug</option><option>Renovation &amp; Sanierung</option><option>Naturstein / Mosaik</option><option>Beratung</option><option>Anderes</option></select>
+        </div>
+        <div class="field"><label for="f-msg">Ihr Projekt</label><textarea id="f-msg" name="msg" placeholder="Was möchten Sie umsetzen? (Räume, Flächen ca. in m², Zeitrahmen ...)"></textarea></div>
+        <button type="submit" class="btn btn-gold btn-block">Offerte anfordern <span class="arrow" aria-hidden="true">→</span></button>
+        <p class="form-note">Kostenlos &amp; unverbindlich · Antwort meist innert 24 h</p>
+      </form>
+      <div class="form-ok" id="formOk" role="status">
+        <div class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></div>
+        <h3>Danke — Anfrage erhalten.</h3>
+        <p>Wir melden uns in Kürze bei Ihnen.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ===== FOOTER (Curtain Reveal) ===== -->
+<div class="foot-stage">
+  <footer class="cine-foot">
+    <div class="cf-aurora" aria-hidden="true"></div>
+    <div class="cf-grid" aria-hidden="true"></div>
+    <div class="cf-giant" aria-hidden="true" data-rv>SB</div>
+
+    <div class="cf-marquee" aria-hidden="true">
+      <div class="cf-track">
+        <span>Präzision</span><i class="diamond"></i><span>Festpreis &amp; Garantie</span><i class="diamond"></i><span>Eidg. Fähigkeitszeugnis</span><i class="diamond"></i><span>Naturstein &amp; Mosaik</span><i class="diamond"></i><span>Region Luzern</span><i class="diamond"></i>
+        <span>Präzision</span><i class="diamond"></i><span>Festpreis &amp; Garantie</span><i class="diamond"></i><span>Eidg. Fähigkeitszeugnis</span><i class="diamond"></i><span>Naturstein &amp; Mosaik</span><i class="diamond"></i><span>Region Luzern</span><i class="diamond"></i>
+      </div>
+    </div>
+
+    <div class="cf-center">
+      <h2 class="cf-h2" data-rv>Bereit für Ihr <em>Projekt?</em></h2>
+      <div class="cf-pills" data-rv data-d="1">
+        <a href="#offerte" class="cf-pill cf-pill-gold magnet">Offerte anfordern <span class="arrow" aria-hidden="true">→</span></a>
+        <a href="tel:0791977635" class="cf-pill magnet">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          079 197 76 35
+        </a>
+        <a href="https://wa.me/+41791977635" target="_blank" rel="noopener" class="cf-pill magnet">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          WhatsApp
+        </a>
+      </div>
+      <div class="cf-pills cf-pills-sub" data-rv data-d="2">
+        <a href="mailto:info@sb-plattenleger.ch" class="cf-pill cf-pill-sm magnet">info@sb-plattenleger.ch</a>
+        <a href="https://www.instagram.com/s.b.plattenleger/" target="_blank" rel="noopener" class="cf-pill cf-pill-sm magnet">Instagram</a>
+        <a href="tel:0796209994" class="cf-pill cf-pill-sm magnet">Leitung: 079 620 99 94</a>
+      </div>
+    </div>
+
+    <div class="cf-bottom">
+      <span class="cf-copy">© 2026 SB Plattenleger GmbH · Hellbühlstrasse 53, 6102 Malters</span>
+      <span class="cf-made"><span class="diamond" aria-hidden="true"></span>Neubau · Altbau · Sanierungen<span class="diamond" aria-hidden="true"></span></span>
+      <button type="button" class="cf-top magnet" id="toTop" aria-label="Zurück nach oben">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg>
+      </button>
+    </div>
+  </footer>
+</div>
+
+<script src="app.js" defer></script>
+</body>
+</html>
