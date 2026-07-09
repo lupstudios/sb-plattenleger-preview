@@ -351,6 +351,11 @@ body.loaded .e-5{transition-delay:1.15s}
 .legal a{color:var(--gold-light)}
 .legal a:hover{text-decoration:underline}
 .legal .stand{margin-top:48px;font-size:13px}
+.legal .cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+.legal .cta-row .btn{width:auto}
+.legal-img{border-radius:12px;overflow:hidden;border:1px solid rgba(194,162,103,.2);margin:18px 0 6px}
+.legal-img img{width:100%;height:auto;display:block;filter:saturate(.88) contrast(1.07) brightness(.93)}
+.legal .intro{font-size:17px;color:var(--text)}
 .legal-foot{border-top:1px solid rgba(194,162,103,.14);padding:22px 0;text-align:center;font-size:12px;color:var(--muted)}
 .cf-made{display:inline-flex;align-items:center;gap:12px;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);padding:12px 22px;border:1px solid rgba(194,162,103,.18);border-radius:999px;background:rgba(22,22,26,.5);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
 .cf-made .diamond{width:6px;height:6px}

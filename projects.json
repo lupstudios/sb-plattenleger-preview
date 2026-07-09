@@ -4,28 +4,28 @@
       "titel": "Lagerhaus Marin Center, Neuchâtel",
       "tag": "Gewerbe",
       "text": "Plattenarbeiten im Lagerhaus des Marin Center in Neuenburg.",
-      "bild": "https://www.sb-plattenleger.ch/wp-content/uploads/2026/01/IMG-20251114-WA0000.webp",
+      "bild": "assets/img/ref_marin.webp",
       "alt": "Dunkle Plattenwand, präzise verlegt"
     },
     {
       "titel": "Neubau in Höri",
       "tag": "Neubau",
       "text": "Komplette Plattenarbeiten in einem Neubau in Höri ZH.",
-      "bild": "https://www.sb-plattenleger.ch/wp-content/uploads/2026/01/IMG-20251114-WA0005.webp",
+      "bild": "assets/img/ref_hoeri.webp",
       "alt": "Bad mit grossformatigen Platten"
     },
     {
       "titel": "Fassadenbau in Gersau",
       "tag": "Fassade",
       "text": "Fassadenplatten an einem Objekt in Gersau SZ, am Vierwaldstättersee.",
-      "bild": "https://www.sb-plattenleger.ch/wp-content/uploads/2026/01/IMG_20250717_190921_077.jpg",
+      "bild": "assets/img/ref_gersau.jpg",
       "alt": "Wandplatten im Aussenbereich, verlegt mit Nivelliersystem"
     },
     {
       "titel": "Fassadenbau in Malters",
       "tag": "Fassade",
       "text": "Fassadenprojekt in Malters, bei uns im Dorf.",
-      "bild": "https://www.sb-plattenleger.ch/wp-content/uploads/2026/01/Screenshot_20250530_221127_Instagram1.webp",
+      "bild": "assets/img/ref_malters.webp",
       "alt": "Fassade mit Platten"
     }
   ]
