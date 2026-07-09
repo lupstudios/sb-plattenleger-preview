@@ -94,74 +94,109 @@ document.querySelectorAll('[data-count]').forEach(el => countIO.observe(el));
 const tl = document.getElementById('ablaufTimeline');
 if (tl) { const tlIO = new IntersectionObserver((es) => { es.forEach(e => { if (e.isIntersecting) { tl.classList.add('run'); tlIO.unobserve(tl) } }) }, { threshold: .08 }); tlIO.observe(tl) }
 
-// Scroll-Film: Frame-Sequenz, gesteuert durch die Scroll-Position (kein Autoplay)
+// Scroll-Montage: Die Wand verplattet sich beim Scrollen — roh → fertig, Platte für Platte
 (() => {
   const wrap = document.getElementById('filmWrap');
   const canvas = document.getElementById('filmCanvas');
-  if (!wrap || !canvas || REDUCE) return;
+  const fallbackImg = document.querySelector('.hero-bg img');
+  const SRC_ROH = 'assets/img/wand_roh.jpg', SRC_FERTIG = 'assets/img/wand_fertig.jpg';
+  // Reduced motion: statisch die fertige Wand zeigen, keine Montage
+  if (REDUCE) { if (fallbackImg) fallbackImg.src = SRC_FERTIG; return; }
+  if (!wrap || !canvas) return;
   const ctx = canvas.getContext('2d');
-  const N = 121, imgs = new Array(N);
-  let cur = -1, target = 0, raf = false;
-  // Mobile bekommt die leichte 720px-Serie (3.3 MB statt 7.6 MB)
-  const dir = matchMedia('(max-width: 768px)').matches ? 'assets/wand-sm/' : 'assets/wand/';
-  const src = i => dir + 'w_' + String(i + 1).padStart(3, '0') + '.webp';
 
-  const draw = (i) => {
-    const im = imgs[i]; if (!im || !im.complete || !im.naturalWidth) return;
+  // Plattenraster in Bildkoordinaten des 1376×768-Masters (Fugenlinien vermessen)
+  const IW = 1376, IH = 768;
+  const COLS = [151, 434, 687, 932, 1177, 1376];
+  const ROWS = [38, 208, 378, 551, 723];
+  // Bildfokus beim Cover-Zuschnitt (Handwerker steht rechts; mobil stärker nach rechts rücken)
+  const FX = matchMedia('(max-width: 768px)').matches ? .78 : .62, FY = .45;
+  // Verlegereihenfolge wie auf der Baustelle: unterste Reihe zuerst, links → rechts
+  const order = [];
+  for (let r = ROWS.length - 2; r >= 0; r--)
+    for (let c = 0; c < COLS.length - 1; c++)
+      order.push([r, c]);
+  const T = order.length;
+
+  const roh = new Image(), fertig = new Image();
+  let ready = 0, raf = false, lastP = -1;
+  const easeOut = t => 1 - Math.pow(1 - t, 3);
+
+  const fit = () => {
     const cw = canvas.width, ch = canvas.height;
-    const s = Math.max(cw / im.naturalWidth, ch / im.naturalHeight);
-    const w = im.naturalWidth * s, h = im.naturalHeight * s;
-    ctx.drawImage(im, (cw - w) / 2, (ch - h) / 2, w, h);
-    cur = i;
+    const s = Math.max(cw / IW, ch / IH);
+    return { s, ox: (cw - IW * s) * FX, oy: (ch - IH * s) * FY };
   };
-  // falls der Ziel-Frame noch lädt: nächstgelegenen fertigen Frame zeigen
-  const nearest = (i) => {
-    for (let d = 0; d < N; d++) {
-      const a = imgs[i - d], b = imgs[i + d];
-      if (a && a.complete && a.naturalWidth) return i - d;
-      if (b && b.complete && b.naturalWidth) return i + d;
+
+  const draw = (p) => {
+    if (ready < 2) return;
+    lastP = p;
+    const cw = canvas.width, ch = canvas.height;
+    const { s, ox, oy } = fit();
+    ctx.clearRect(0, 0, cw, ch);
+    ctx.drawImage(roh, ox, oy, IW * s, IH * s);
+
+    // Montage läuft von 10% bis 92% des Scrollwegs
+    const t = Math.min(Math.max((p - .10) / .82, 0), 1);
+    const f = t * T, k = Math.floor(f);
+
+    for (let i = 0; i < Math.min(k + 1, T); i++) {
+      const [r, c] = order[i];
+      const x0 = COLS[c], x1 = COLS[c + 1], y0 = ROWS[r], y1 = ROWS[r + 1];
+      const local = i < k ? 1 : f - k;   // 0..1 = diese Platte setzt sich gerade
+      const e = easeOut(local);
+      const lift = (1 - e) * (y1 - y0) * .18;   // gleitet leicht von oben ins Kleberbett
+      ctx.save();
+      ctx.beginPath();
+      ctx.rect(ox + x0 * s, oy + y0 * s, (x1 - x0) * s, (y1 - y0) * s);
+      ctx.clip();
+      ctx.globalAlpha = Math.min(1, local * 2.5);
+      ctx.drawImage(fertig, ox, oy - lift * s, IW * s, IH * s);
+      ctx.restore();
+      // Gold-Glanz an der frisch gesetzten Platte (Fugenlinien-Motiv)
+      if (local < 1) {
+        ctx.save();
+        ctx.globalAlpha = (1 - e) * .5;
+        ctx.strokeStyle = '#c2a267';
+        ctx.lineWidth = Math.max(1.5, 2 * s);
+        ctx.strokeRect(ox + x0 * s, oy + y0 * s, (x1 - x0) * s, (y1 - y0) * s);
+        ctx.restore();
+      }
     }
-    return -1;
+    ctx.globalAlpha = 1;
   };
+
   const resize = () => {
     const dpr = Math.min(devicePixelRatio || 1, 2);
     canvas.width = Math.round(canvas.clientWidth * dpr);
     canvas.height = Math.round(canvas.clientHeight * dpr);
-    const n = nearest(target); if (n >= 0) draw(n);
+    if (lastP >= 0) draw(lastP);
   };
   addEventListener('resize', resize, { passive: true });
 
   const heroInner = document.querySelector('.hero-inner');
   const heroHint = document.querySelector('.hero-hint');
+  // Debug/Verifikation: #p=0.5 friert den Montage-Fortschritt ein
+  const forced = () => { const m = location.hash.match(/p=([\d.]+)/); return m ? Math.min(Math.max(parseFloat(m[1]), 0), 1) : null; };
   const update = () => {
     raf = false;
     const r = wrap.getBoundingClientRect();
     const total = r.height - innerHeight;
-    const p = total > 0 ? Math.min(Math.max(-r.top / total, 0), 1) : 0;
-    target = Math.min(N - 1, Math.floor(p * (N - 1)));
-    const n = nearest(target);
-    if (n >= 0 && n !== cur) draw(n);
-    // Headline blendet in den ersten ~28% des Films aus
+    let p = total > 0 ? Math.min(Math.max(-r.top / total, 0), 1) : 0;
+    const fp = forced(); if (fp !== null) p = fp;
+    draw(p);
+    // Headline blendet in den ersten ~28% der Montage aus
     const fade = Math.min(p / .28, 1);
     if (heroInner) { heroInner.style.opacity = String(1 - fade); heroInner.style.transform = 'translateY(' + (-36 * fade) + 'px)'; }
     if (heroHint) heroHint.style.opacity = String(1 - Math.min(p / .1, 1));
   };
   const onFilmScroll = () => { if (!raf) { raf = true; requestAnimationFrame(update); } };
   addEventListener('scroll', onFilmScroll, { passive: true });
+  addEventListener('hashchange', onFilmScroll, { passive: true });
 
-  const load = (i, cb) => {
-    const im = new Image();
-    im.onload = () => { if (cb) cb(); if (i === target || cur !== target) onFilmScroll(); };
-    im.src = src(i); imgs[i] = im;
-  };
-  // Frame 1 sofort zeigen, Rest gestaffelt in 6er-Gruppen nachladen
-  load(0, () => { resize(); canvas.classList.add('ready'); update(); });
-  let idx = 1;
-  (function next() {
-    if (idx >= N) return;
-    const end = Math.min(idx + 6, N); let done = 0; const want = end - idx;
-    for (; idx < end; idx++) load(idx, () => { if (++done === want) next(); });
-  })();
+  const loaded = () => { if (++ready === 2) { resize(); canvas.classList.add('ready'); update(); } };
+  roh.onload = loaded; fertig.onload = loaded;
+  roh.src = SRC_ROH; fertig.src = SRC_FERTIG;
 })();
 
 // magnetic pills (Footer) — nur bei Maus-Zeiger und ohne reduced motion
