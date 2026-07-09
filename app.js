@@ -257,8 +257,9 @@ form.addEventListener('submit', async (e) => {
 // ===== v2.1 Animationen (2026-07-08) =====
 
 // 1) Fliesen-Reveal: 4 Deck-Kacheln pro Referenzbild, verschwinden versetzt (CSS uebernimmt Timing)
+// (v2.4: nicht mehr auf .sc-media — die Showcase-Slides werden dynamisch aus projects.json gebaut)
 if (!REDUCE) {
-  document.querySelectorAll('.gallery figure.g-item, .showcase .sc-media').forEach(fig => {
+  document.querySelectorAll('.gallery figure.g-item').forEach(fig => {
     const c = document.createElement('div'); c.className = 'tile-cover'; c.setAttribute('aria-hidden', 'true');
     for (let i = 0; i < 4; i++) c.appendChild(document.createElement('i'));
     fig.appendChild(c);
@@ -337,11 +338,30 @@ if (!REDUCE && matchMedia('(pointer:fine)').matches) {
   document.documentElement.addEventListener('mouseleave', () => sp.classList.remove('on'));
 }
 
-// ===== v2.2 Referenzen-Showcase: Slider + Lightbox =====
+// ===== v2.2/v2.4 Referenzen-Showcase: Projekte aus projects.json (via admin.html pflegbar) =====
 (() => {
   const track = document.getElementById('scTrack'); if (!track) return;
+  const esc = (s) => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+
+  // Slides aus den Projektdaten bauen (statisches Markup in index.html bleibt als Fallback)
+  const build = (projekte) => {
+    track.innerHTML = projekte.map(p => (
+      '<article class="sc-slide">'
+      + '<figure class="sc-media img-grade"><img src="' + esc(p.bild) + '" alt="' + esc(p.alt || p.titel) + '" loading="lazy" width="800" height="600"></figure>'
+      + '<div class="sc-info">'
+      + '<span class="tag">' + esc(p.tag) + '</span>'
+      + '<h3>' + esc(p.titel) + '</h3>'
+      + '<p>' + esc(p.text) + '</p>'
+      + '<button class="sc-zoom" type="button" aria-label="Projekt gross ansehen">Gross ansehen <span class="arrow" aria-hidden="true">→</span></button>'
+      + '</div></article>'
+    )).join('');
+  };
+
+  const init = () => {
   const slides = [...track.querySelectorAll('.sc-slide')];
   const curEl = document.getElementById('scCur'), dots = document.getElementById('scDots');
+  const totalEl = document.querySelector('.sc-count span');
+  if (totalEl) totalEl.textContent = ' / ' + String(slides.length).padStart(2, '0');
   const GAP = 24;
   let idx = 0;
   slides.forEach((_, i) => {
@@ -398,4 +418,12 @@ if (!REDUCE && matchMedia('(pointer:fine)').matches) {
     if (e.key === 'ArrowRight') open(lbi + 1);
     if (e.key === 'ArrowLeft') open(lbi - 1);
   });
+  };
+
+  // Projekte laden; wenn das schiefgeht, bleiben die statischen Slides aus index.html stehen
+  fetch('projects.json', { cache: 'no-store' })
+    .then(r => { if (!r.ok) throw new Error('load failed'); return r.json(); })
+    .then(data => { if (Array.isArray(data.projekte) && data.projekte.length) build(data.projekte); })
+    .catch(() => {})
+    .finally(init);
 })();

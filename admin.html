@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projekte verwalten · S.B. Plattenleger</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" href="assets/img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0F0F12;--panel:#16161A;--panel2:#1C1C22;--line:rgba(194,162,103,.26);
+  --gold:#C2A267;--gold-light:#DBC290;--text:#E9E6DE;--muted:#A29D92;--rot:#D08A7A;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100dvh}
+.wrap{max-width:680px;margin:0 auto;padding:28px 18px 80px}
+h1,h2,h3{font-family:'Montserrat',sans-serif;line-height:1.2}
+h1{font-size:24px;margin-bottom:4px}
+h1 em{font-style:normal;color:var(--gold)}
+.sub{color:var(--muted);font-size:14px;margin-bottom:28px}
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:26px}
+.top img{width:120px;height:auto}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:22px;margin-bottom:18px}
+label{display:block;font-size:13px;font-weight:600;color:var(--gold-light);margin:14px 0 6px}
+input,select,textarea{width:100%;background:var(--panel2);border:1px solid var(--line);border-radius:9px;color:var(--text);font:inherit;padding:12px 14px}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--gold);outline-offset:1px}
+textarea{min-height:90px;resize:vertical}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;width:100%;margin-top:18px;padding:14px 20px;border:0;border-radius:10px;background:linear-gradient(135deg,var(--gold-light),var(--gold));color:#1C1C1E;font-weight:700;font-size:15px;cursor:pointer}
+.btn:disabled{opacity:.55;cursor:default}
+.btn-ghost{background:none;border:1px solid var(--line);color:var(--gold-light);width:auto;padding:8px 16px;margin:0;font-size:13px;font-weight:600}
+.btn-del{background:none;border:1px solid rgba(208,138,122,.4);color:var(--rot);width:auto;padding:7px 14px;margin:0;font-size:13px;font-weight:600}
+.msg{margin-top:14px;padding:12px 14px;border-radius:9px;font-size:14px;display:none}
+.msg.show{display:block}
+.msg.ok{background:rgba(194,162,103,.1);border:1px solid var(--line);color:var(--gold-light)}
+.msg.err{background:rgba(208,138,122,.08);border:1px solid rgba(208,138,122,.35);color:var(--rot)}
+.proj{display:grid;grid-template-columns:86px 1fr auto;gap:14px;align-items:center;padding:14px 0;border-bottom:1px solid rgba(194,162,103,.14)}
+.proj:last-child{border-bottom:none}
+.proj img{width:86px;height:64px;object-fit:cover;border-radius:8px;display:block;background:var(--panel2)}
+.proj h3{font-size:15px}
+.proj .meta{font-size:12.5px;color:var(--muted)}
+.tag-pill{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--gold);border:1px solid var(--line);border-radius:100px;padding:1px 9px;margin-bottom:4px}
+.hint{font-size:12.5px;color:var(--muted);margin-top:8px}
+.foto-preview{margin-top:10px;display:none;border-radius:10px;overflow:hidden;border:1px solid var(--line)}
+.foto-preview img{display:block;width:100%;height:auto}
+.count-note{font-size:13px;color:var(--muted);margin:4px 0 14px}
+@media(max-width:480px){.proj{grid-template-columns:70px 1fr}.proj .actions{grid-column:1/-1}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="top">
+    <img src="https://www.sb-plattenleger.ch/wp-content/uploads/2023/03/sb-logo-sw.webp" alt="S.B. Plattenleger">
+    <button class="btn-ghost" id="btnLogout" hidden>Abmelden</button>
+  </div>
+
+  <!-- LOGIN -->
+  <section id="viewLogin">
+    <h1>Projekte <em>verwalten</em></h1>
+    <p class="sub">Hier können Sie neue Referenz-Projekte auf die Website stellen.</p>
+    <div class="card">
+      <label for="code">Ihr Zugangscode</label>
+      <input id="code" type="password" autocomplete="current-password" placeholder="Zugangscode einfügen">
+      <button class="btn" id="btnLogin">Anmelden</button>
+      <div class="msg err" id="loginErr">Der Zugangscode stimmt nicht. Bitte nochmals prüfen oder bei LUP Studios melden.</div>
+      <p class="hint">Den Zugangscode haben Sie von LUP Studios erhalten. Er bleibt auf diesem Gerät gespeichert, Sie müssen ihn nur einmal eingeben.</p>
+    </div>
+  </section>
+
+  <!-- APP -->
+  <section id="viewApp" hidden>
+    <h1>Projekte <em>verwalten</em></h1>
+    <p class="sub">Neue Projekte erscheinen etwa eine Minute nach dem Speichern auf der Website.</p>
+
+    <div class="card">
+      <h2 style="font-size:17px">Neues Projekt</h2>
+      <label for="f-titel">Titel</label>
+      <input id="f-titel" type="text" placeholder="z.B. Fassadenbau in Kriens" maxlength="60">
+      <label for="f-tag">Kategorie</label>
+      <select id="f-tag">
+        <option>Fassade</option>
+        <option>Neubau</option>
+        <option>Renovation</option>
+        <option>Gewerbe</option>
+        <option>Bad</option>
+        <option>Anderes</option>
+      </select>
+      <label for="f-text">Kurze Beschreibung</label>
+      <textarea id="f-text" placeholder="Ein bis zwei Sätze. Was wurde gemacht, wo?" maxlength="160"></textarea>
+      <label for="f-foto">Foto</label>
+      <input id="f-foto" type="file" accept="image/*">
+      <div class="foto-preview" id="fotoPrev"><img alt="Foto-Vorschau"></div>
+      <p class="hint">Querformat wirkt am besten. Das Foto wird automatisch verkleinert.</p>
+      <button class="btn" id="btnSave">Projekt auf die Website stellen</button>
+      <div class="msg" id="saveMsg"></div>
+    </div>
+
+    <div class="card">
+      <h2 style="font-size:17px">Aktuelle Projekte auf der Website</h2>
+      <p class="count-note" id="countNote"></p>
+      <div id="projList"></div>
+    </div>
+  </section>
+
+</div>
+
+<script>
+(() => {
+  // ===== Konfiguration =====
+  const REPO = 'lupstudios/sb-plattenleger-preview';
+  const BRANCH = 'main';
+  const JSON_PATH = 'projects.json';
+  const IMG_DIR = 'assets/projekte';
+  const API = 'https://api.github.com';
+  const STORE_KEY = 'sbProjekteZugang';
+
+  const $ = (id) => document.getElementById(id);
+  let token = localStorage.getItem(STORE_KEY) || '';
+  let projekte = [];
+  let jsonSha = null;
+
+  const headers = () => ({
+    'Authorization': 'Bearer ' + token,
+    'Accept': 'application/vnd.github+json',
+    'X-GitHub-Api-Version': '2022-11-28'
+  });
+
+  // UTF-8 <-> Base64
+  const b64encode = (str) => {
+    const bytes = new TextEncoder().encode(str);
+    let bin = '';
+    bytes.forEach(b => bin += String.fromCharCode(b));
+    return btoa(bin);
+  };
+  const b64decode = (b64) => {
+    const bin = atob(b64.replace(/\n/g, ''));
+    const bytes = Uint8Array.from(bin, c => c.charCodeAt(0));
+    return new TextDecoder().decode(bytes);
+  };
+  const blobToB64 = (blob) => new Promise((res, rej) => {
+    const r = new FileReader();
+    r.onload = () => res(String(r.result).split(',')[1]);
+    r.onerror = rej;
+    r.readAsDataURL(blob);
+  });
+  const esc = (s) => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+
+  // ===== Ansichten =====
+  const showApp = () => { $('viewLogin').hidden = true; $('viewApp').hidden = false; $('btnLogout').hidden = false; };
+  const showLogin = () => { $('viewLogin').hidden = false; $('viewApp').hidden = true; $('btnLogout').hidden = true; };
+
+  // ===== Login =====
+  const tryLogin = async (code) => {
+    const res = await fetch(API + '/repos/' + REPO, {
+      headers: { 'Authorization': 'Bearer ' + code, 'Accept': 'application/vnd.github+json' }
+    });
+    return res.ok;
+  };
+  $('btnLogin').addEventListener('click', async () => {
+    const code = $('code').value.trim();
+    $('loginErr').classList.remove('show');
+    if (!code) return;
+    $('btnLogin').disabled = true;
+    if (await tryLogin(code)) {
+      token = code;
+      localStorage.setItem(STORE_KEY, code);
+      showApp();
+      loadProjects();
+    } else {
+      $('loginErr').classList.add('show');
+    }
+    $('btnLogin').disabled = false;
+  });
+  $('code').addEventListener('keydown', (e) => { if (e.key === 'Enter') $('btnLogin').click(); });
+  $('btnLogout').addEventListener('click', () => {
+    localStorage.removeItem(STORE_KEY);
+    token = '';
+    showLogin();
+  });
+
+  // ===== Projekte laden =====
+  const loadProjects = async () => {
+    const res = await fetch(API + '/repos/' + REPO + '/contents/' + JSON_PATH + '?ref=' + BRANCH, { headers: headers() });
+    if (!res.ok) { renderList(); return; }
+    const data = await res.json();
+    jsonSha = data.sha;
+    try { projekte = JSON.parse(b64decode(data.content)).projekte || []; } catch (_) { projekte = []; }
+    renderList();
+  };
+
+  const renderList = () => {
+    $('countNote').textContent = projekte.length + (projekte.length === 1 ? ' Projekt' : ' Projekte') + ' online';
+    $('projList').innerHTML = projekte.map((p, i) => (
+      '<div class="proj">'
+      + '<img src="' + esc(new URL(p.bild, location.href).href) + '" alt="" loading="lazy">'
+      + '<div><span class="tag-pill">' + esc(p.tag) + '</span><h3>' + esc(p.titel) + '</h3><p class="meta">' + esc(p.text) + '</p></div>'
+      + '<div class="actions"><button class="btn-del" data-i="' + i + '">Entfernen</button></div>'
+      + '</div>'
+    )).join('') || '<p class="hint">Noch keine Projekte erfasst.</p>';
+    document.querySelectorAll('.btn-del').forEach(b => b.addEventListener('click', () => removeProject(+b.dataset.i)));
+  };
+
+  // ===== Speichern (projects.json committen) =====
+  const saveJson = async (message) => {
+    const body = {
+      message: message,
+      content: b64encode(JSON.stringify({ projekte: projekte }, null, 2) + '\n'),
+      branch: BRANCH
+    };
+    if (jsonSha) body.sha = jsonSha;
+    let res = await fetch(API + '/repos/' + REPO + '/contents/' + JSON_PATH, {
+      method: 'PUT', headers: headers(), body: JSON.stringify(body)
+    });
+    if (res.status === 409 || res.status === 422) {
+      // Stand hat geaendert: sha frisch holen und nochmals versuchen
+      const fresh = await fetch(API + '/repos/' + REPO + '/contents/' + JSON_PATH + '?ref=' + BRANCH, { headers: headers() });
+      if (fresh.ok) {
+        body.sha = (await fresh.json()).sha;
+        res = await fetch(API + '/repos/' + REPO + '/contents/' + JSON_PATH, {
+          method: 'PUT', headers: headers(), body: JSON.stringify(body)
+        });
+      }
+    }
+    if (!res.ok) throw new Error('Speichern fehlgeschlagen (' + res.status + ')');
+    jsonSha = (await res.json()).content.sha;
+  };
+
+  // ===== Foto verkleinern =====
+  const resizePhoto = (file) => new Promise((res, rej) => {
+    const img = new Image();
+    img.onload = () => {
+      const MAX = 1600;
+      const s = Math.min(1, MAX / img.width);
+      const c = document.createElement('canvas');
+      c.width = Math.round(img.width * s);
+      c.height = Math.round(img.height * s);
+      c.getContext('2d').drawImage(img, 0, 0, c.width, c.height);
+      c.toBlob(b => b ? res(b) : rej(new Error('Foto konnte nicht verarbeitet werden')), 'image/jpeg', .82);
+    };
+    img.onerror = () => rej(new Error('Foto konnte nicht gelesen werden'));
+    img.src = URL.createObjectURL(file);
+  });
+
+  $('f-foto').addEventListener('change', () => {
+    const f = $('f-foto').files[0];
+    const prev = $('fotoPrev');
+    if (f) { prev.querySelector('img').src = URL.createObjectURL(f); prev.style.display = 'block'; }
+    else prev.style.display = 'none';
+  });
+
+  // ===== Neues Projekt =====
+  const flash = (ok, text) => {
+    const m = $('saveMsg');
+    m.className = 'msg show ' + (ok ? 'ok' : 'err');
+    m.textContent = text;
+  };
+  $('btnSave').addEventListener('click', async () => {
+    const titel = $('f-titel').value.trim();
+    const tag = $('f-tag').value;
+    const text = $('f-text').value.trim();
+    const file = $('f-foto').files[0];
+    if (!titel) return flash(false, 'Bitte einen Titel eingeben.');
+    if (!text) return flash(false, 'Bitte eine kurze Beschreibung eingeben.');
+    if (!file) return flash(false, 'Bitte ein Foto auswählen.');
+    $('btnSave').disabled = true;
+    flash(true, 'Wird gespeichert ...');
+    try {
+      const blob = await resizePhoto(file);
+      const imgPath = IMG_DIR + '/proj-' + Date.now() + '.jpg';
+      const up = await fetch(API + '/repos/' + REPO + '/contents/' + imgPath, {
+        method: 'PUT', headers: headers(),
+        body: JSON.stringify({ message: 'Projektfoto: ' + titel, content: await blobToB64(blob), branch: BRANCH })
+      });
+      if (!up.ok) throw new Error('Foto-Upload fehlgeschlagen (' + up.status + ')');
+      projekte.unshift({ titel: titel, tag: tag, text: text, bild: imgPath, alt: titel });
+      await saveJson('Neues Projekt: ' + titel);
+      renderList();
+      $('f-titel').value = ''; $('f-text').value = ''; $('f-foto').value = '';
+      $('fotoPrev').style.display = 'none';
+      flash(true, 'Gespeichert! Das Projekt ist in etwa einer Minute auf der Website sichtbar.');
+    } catch (err) {
+      flash(false, 'Das hat nicht geklappt: ' + err.message + '. Bitte nochmals versuchen oder LUP Studios melden.');
+    }
+    $('btnSave').disabled = false;
+  });
+
+  // ===== Projekt entfernen =====
+  const removeProject = async (i) => {
+    const p = projekte[i];
+    if (!p) return;
+    if (!confirm('"' + p.titel + '" wirklich von der Website entfernen?')) return;
+    try {
+      projekte.splice(i, 1);
+      await saveJson('Projekt entfernt: ' + p.titel);
+      // Zugehoeriges Foto aufraeumen (nur eigene Uploads), Fehler hier sind egal
+      if (p.bild && p.bild.indexOf(IMG_DIR + '/') === 0) {
+        try {
+          const f = await fetch(API + '/repos/' + REPO + '/contents/' + p.bild + '?ref=' + BRANCH, { headers: headers() });
+          if (f.ok) {
+            const sha = (await f.json()).sha;
+            await fetch(API + '/repos/' + REPO + '/contents/' + p.bild, {
+              method: 'DELETE', headers: headers(),
+              body: JSON.stringify({ message: 'Foto entfernt: ' + p.titel, sha: sha, branch: BRANCH })
+            });
+          }
+        } catch (_) {}
+      }
+      renderList();
+      flash(true, 'Entfernt. Die Website aktualisiert sich in etwa einer Minute.');
+    } catch (err) {
+      flash(false, 'Entfernen hat nicht geklappt: ' + err.message);
+      loadProjects();
+    }
+  };
+
+  // ===== Start =====
+  if (token) {
+    tryLogin(token).then(ok => {
+      if (ok) { showApp(); loadProjects(); }
+      else { localStorage.removeItem(STORE_KEY); token = ''; showLogin(); }
+    });
+  } else {
+    showLogin();
+  }
+})();
+</script>
+</body>
+</html>
