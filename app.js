@@ -223,12 +223,35 @@ if (!REDUCE && matchMedia('(pointer:fine)').matches) {
 const toTop = document.getElementById('toTop');
 if (toTop) toTop.addEventListener('click', () => scrollTo({ top: 0, behavior: REDUCE ? 'instant' : 'smooth' }));
 
-// form (Demo, kein Backend)
+// Offerte-Formular: Versand via FormSubmit an info@sb-plattenleger.ch
+// (erste echte Anfrage loest einmalig eine Aktivierungs-Mail von formsubmit.co aus)
 const form = document.getElementById('offerForm');
-form.addEventListener('submit', (e) => {
+form.addEventListener('submit', async (e) => {
   e.preventDefault();
-  form.style.display = 'none';
-  document.getElementById('formOk').classList.add('show');
+  if (form.querySelector('[name="_honey"]').value) return; // Spam-Falle
+  const btn = form.querySelector('button[type="submit"]');
+  const err = document.getElementById('formErr');
+  err.hidden = true;
+  btn.disabled = true;
+  const label = btn.innerHTML;
+  btn.textContent = 'Wird gesendet ...';
+  try {
+    const data = new FormData(form);
+    data.append('_subject', 'Offerte-Anfrage über die Website');
+    data.append('_template', 'table');
+    const res = await fetch('https://formsubmit.co/ajax/info@sb-plattenleger.ch', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' },
+      body: data
+    });
+    if (!res.ok) throw new Error('send failed');
+    form.style.display = 'none';
+    document.getElementById('formOk').classList.add('show');
+  } catch (_) {
+    err.hidden = false;
+    btn.disabled = false;
+    btn.innerHTML = label;
+  }
 });
 
 // ===== v2.1 Animationen (2026-07-08) =====

@@ -291,6 +291,7 @@ body.loaded .e-5{transition-delay:1.15s}
 .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(194,162,103,.16)}
 .row2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .form-note{margin-top:14px;text-align:center;font-size:13px;color:var(--muted)}
+.form-err{margin-top:14px;text-align:center;font-size:14px;color:var(--gold-light);background:rgba(194,162,103,.08);border:1px solid var(--line);border-radius:6px;padding:10px 14px}
 .form-ok{display:none;text-align:center;padding:40px 20px}
 .form-ok.show{display:block;animation:okIn .6s var(--ease-out)}
 @keyframes okIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
@@ -329,6 +330,28 @@ body.loaded .e-5{transition-delay:1.15s}
 .cf-pill-sm{min-height:44px;padding:11px 22px;font-size:12.5px;font-weight:600;color:var(--muted)}
 .cf-bottom{position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;padding:0 clamp(20px,4vw,48px) 30px}
 .cf-copy{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.cf-copy a{color:var(--gold-light)}
+.cf-copy a:hover{text-decoration:underline}
+
+/* ---------- Rechtsseiten (Impressum / Datenschutz) ---------- */
+.legal-head{position:sticky;top:0;z-index:var(--z-header);background:rgba(15,15,18,.88);backdrop-filter:blur(10px);border-bottom:1px solid rgba(194,162,103,.14)}
+.legal-head .wrap{display:flex;align-items:center;justify-content:space-between;padding-top:16px;padding-bottom:16px}
+.legal-head img{width:130px;height:auto}
+.legal-back{font-size:14px;color:var(--gold-light)}
+.legal-back:hover{text-decoration:underline}
+.legal{max-width:760px;padding:72px 28px 96px}
+.legal h1{font-size:clamp(30px,4.5vw,42px);margin-bottom:28px}
+.legal h1 em{font-style:normal;color:var(--gold)}
+.legal h2{font-size:19px;margin:40px 0 10px;color:var(--gold-light)}
+.legal p,.legal li{color:var(--muted);font-size:15.5px}
+.legal p b{color:var(--text);font-weight:600}
+.legal ul{list-style:none;margin-top:8px}
+.legal li{padding-left:18px;position:relative;margin-bottom:6px}
+.legal li::before{content:"";position:absolute;left:0;top:.62em;width:7px;height:7px;transform:rotate(45deg);background:var(--gold);opacity:.7}
+.legal a{color:var(--gold-light)}
+.legal a:hover{text-decoration:underline}
+.legal .stand{margin-top:48px;font-size:13px}
+.legal-foot{border-top:1px solid rgba(194,162,103,.14);padding:22px 0;text-align:center;font-size:12px;color:var(--muted)}
 .cf-made{display:inline-flex;align-items:center;gap:12px;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);padding:12px 22px;border:1px solid rgba(194,162,103,.18);border-radius:999px;background:rgba(22,22,26,.5);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
 .cf-made .diamond{width:6px;height:6px}
 .cf-top{display:grid;place-items:center;width:52px;height:52px;border-radius:50%;color:var(--muted);background:linear-gradient(145deg,rgba(233,230,222,.05),rgba(233,230,222,.015));border:1px solid rgba(194,162,103,.2);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);transition:border-color .35s,color .35s}

@@ -385,6 +385,7 @@
     </div>
     <div class="form-panel" data-rv data-d="1">
       <form id="offerForm" novalidate>
+        <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px">
         <div class="field"><label for="f-name">Name</label><input id="f-name" type="text" name="name" autocomplete="name" placeholder="Ihr Name" required></div>
         <div class="row2">
           <div class="field"><label for="f-tel">Telefon</label><input id="f-tel" type="tel" name="tel" autocomplete="tel" placeholder="079 ..." required></div>
@@ -395,6 +396,7 @@
         </div>
         <div class="field"><label for="f-msg">Ihr Projekt</label><textarea id="f-msg" name="msg" placeholder="Was möchten Sie umsetzen? (Räume, Flächen ca. in m², Zeitrahmen ...)"></textarea></div>
         <button type="submit" class="btn btn-gold btn-block">Offerte anfordern <span class="arrow" aria-hidden="true">→</span></button>
+        <p class="form-err" id="formErr" role="alert" hidden>Das hat leider nicht geklappt. Rufen Sie uns direkt an (079 197 76 35) oder schreiben Sie an info@sb-plattenleger.ch.</p>
         <p class="form-note">Antwort in der Regel innert 1 bis 2 Arbeitstagen</p>
       </form>
       <div class="form-ok" id="formOk" role="status">
@@ -443,7 +445,7 @@
     </div>
 
     <div class="cf-bottom">
-      <span class="cf-copy">© 2026 S.B. Plattenleger GmbH · Hellbühlstrasse 53, 6102 Malters · CHE-394.756.265 MWST</span>
+      <span class="cf-copy">© 2026 S.B. Plattenleger GmbH · Hellbühlstrasse 53, 6102 Malters · <a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a></span>
       <span class="cf-made"><span class="diamond" aria-hidden="true"></span>Neubau · Altbau · Sanierungen<span class="diamond" aria-hidden="true"></span></span>
       <button type="button" class="cf-top magnet" id="toTop" aria-label="Zurück nach oben">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg>
