@@ -343,6 +343,11 @@ body.loaded .e-5{transition-delay:1.15s}
 .legal .svc-steps b{color:var(--gold-light);font-weight:600}
 .legal .svc-steps .arrow{margin:0 3px;color:var(--gold)}
 .legal .svc-cta{display:flex;flex-wrap:wrap;gap:24px;margin-top:14px}
+.ref-item{margin-bottom:56px;padding-top:36px;border-top:1px solid rgba(194,162,103,.14)}
+.ref-item:first-of-type{padding-top:0;border-top:none}
+.ref-item:last-child{margin-bottom:8px}
+.ref-item h2{margin-top:6px}
+.ref-tag{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
 .legal .stand{margin-top:48px;font-size:13px}
 .legal .cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
 .legal .cta-row .btn{width:auto}
