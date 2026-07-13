@@ -168,9 +168,12 @@ body.loaded .e-5{transition-delay:1.15s}
   linear-gradient(180deg,rgba(15,15,18,.06),transparent 30%,transparent 60%,rgba(11,11,14,.42)),
   radial-gradient(120% 90% at 50% 10%,transparent 55%,rgba(183,145,85,.09))}
 
-/* ---------- Leistungen ---------- */
-.services{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
-.svc{display:flex;flex-direction:column;background:var(--panel-glass);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border:1px solid rgba(194,162,103,.14);border-radius:4px;overflow:hidden;transition:transform .45s var(--ease-out),border-color .35s,box-shadow .45s,opacity var(--dur-in) var(--ease-out)}
+/* ---------- Leistungen (Karussell, v2.7) ---------- */
+.svc-carousel{position:relative}
+.services{display:flex;gap:26px;overflow-x:auto;scroll-snap-type:x proximity;scrollbar-width:none;-ms-overflow-style:none;padding-bottom:2px}
+.services::-webkit-scrollbar{display:none}
+.services:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
+.svc{flex:0 0 300px;scroll-snap-align:start;display:flex;flex-direction:column;background:var(--panel-glass);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border:1px solid rgba(194,162,103,.14);border-radius:4px;overflow:hidden;transition:transform .45s var(--ease-out),border-color .35s,box-shadow .45s}
 .svc:hover{transform:translateY(-6px);border-color:rgba(194,162,103,.32);box-shadow:0 26px 64px rgba(0,0,0,.42)}
 .svc-img{aspect-ratio:4/3;border-radius:0}
 .svc-img img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease-out)}
@@ -179,8 +182,8 @@ body.loaded .e-5{transition-delay:1.15s}
 .svc-num b{transform:rotate(-45deg);font-family:'Montserrat',sans-serif;font-size:13px;font-weight:800;color:var(--gold-light)}
 .svc-body{display:flex;flex-direction:column;gap:12px;padding:28px 28px 26px;flex:1}
 .svc-body p{font-size:15px;color:var(--muted);flex:1}
-.svc-extra{margin-top:44px;text-align:center;font-size:15px;color:var(--muted)}
-.svc-extra b{color:var(--gold-light);font-weight:600}
+.svc-carousel .sc-ui{margin-top:22px}
+.svc-extra{margin-top:34px;text-align:center;font-size:15px}
 
 /* ---------- Ablauf / Timeline ---------- */
 .timeline{position:relative;background:linear-gradient(180deg,rgba(22,22,26,.85),rgba(15,15,18,.65));border:1px solid rgba(194,162,103,.14);border-radius:4px;padding:clamp(40px,5vw,64px) clamp(24px,4vw,56px)}
@@ -365,7 +368,7 @@ body.loaded .e-5{transition-delay:1.15s}
   .nav-mobile-cta a{color:var(--gold)}
   .nav-phone{display:none}
   .burger{display:flex}
-  .services{grid-template-columns:1fr 1fr}
+  .svc{flex-basis:280px}
   .tl-steps{grid-template-columns:1fr 1fr;gap:40px 24px}
   .tl-line{display:none}
   .gallery{grid-template-columns:1fr 1fr;grid-auto-rows:240px}
@@ -377,7 +380,7 @@ body.loaded .e-5{transition-delay:1.15s}
   .nav{height:72px}
   .logo img{height:36px}
   .btn-sm{display:none}
-  .services{grid-template-columns:1fr}
+  .svc{flex-basis:82vw}
   .gallery{grid-template-columns:1fr;grid-auto-rows:250px}
   .g-feature{grid-row:span 1}
   .stats{grid-template-columns:1fr;gap:12px}

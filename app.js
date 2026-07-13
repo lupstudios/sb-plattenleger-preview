@@ -332,7 +332,7 @@ if (!REDUCE && matchMedia('(pointer:fine)').matches) {
   const init = () => {
   const slides = [...track.querySelectorAll('.sc-slide')];
   const curEl = document.getElementById('scCur'), dots = document.getElementById('scDots');
-  const totalEl = document.querySelector('.sc-count span');
+  const totalEl = curEl ? curEl.nextElementSibling : null;
   if (totalEl) totalEl.textContent = ' / ' + String(slides.length).padStart(2, '0');
   const GAP = 24;
   let idx = 0;
@@ -398,4 +398,32 @@ if (!REDUCE && matchMedia('(pointer:fine)').matches) {
     .then(data => { if (Array.isArray(data.projekte) && data.projekte.length) build(data.projekte); })
     .catch(() => {})
     .finally(init);
+})();
+
+// ===== v2.7 Leistungen-Karussell: alle Leistungen durchklickbar =====
+(() => {
+  const track = document.getElementById('svcTrack'); if (!track) return;
+  const cards = [...track.querySelectorAll('.svc')]; if (!cards.length) return;
+  const curEl = document.getElementById('svcCur');
+  const GAP = 26;
+  let idx = 0;
+  const cardStep = () => cards[0].getBoundingClientRect().width + GAP;
+  const setUi = () => { if (curEl) curEl.textContent = String(idx + 1).padStart(2, '0'); };
+  const go = (i) => {
+    idx = Math.max(0, Math.min(cards.length - 1, i));
+    track.scrollTo({ left: idx * cardStep(), behavior: REDUCE ? 'instant' : 'smooth' });
+    setUi();
+  };
+  track.addEventListener('scroll', () => {
+    const i = Math.round(track.scrollLeft / cardStep());
+    if (i !== idx) { idx = Math.max(0, Math.min(cards.length - 1, i)); setUi(); }
+  }, { passive: true });
+  const prevBtn = document.getElementById('svcPrev'), nextBtn = document.getElementById('svcNext');
+  if (prevBtn) prevBtn.addEventListener('click', () => go(idx - 1));
+  if (nextBtn) nextBtn.addEventListener('click', () => go(idx + 1));
+  track.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight') { e.preventDefault(); go(idx + 1); }
+    if (e.key === 'ArrowLeft') { e.preventDefault(); go(idx - 1); }
+  });
+  setUi();
 })();
