@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Badezimmer und Duschen · Plattenleger in der Region Luzern · S.B. Plattenleger</title>
+<meta name="description" content="Plattenarbeiten in Bad und Dusche: Abdichtung, Gefälle und Verlegung aus einer Hand. S.B. Plattenleger, Region Luzern.">
+<link rel="canonical" href="https://www.sb-plattenleger.ch/bad-duschen.html">
+<link rel="icon" type="image/png" href="assets/img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="legal-head">
+  <div class="wrap">
+    <a href="index.html" aria-label="Zur Startseite">
+      <img src="assets/img/logo-sw.webp" alt="S.B. Plattenleger GmbH" width="130" height="38">
+    </a>
+    <a href="index.html" class="legal-back">Zurück zur Startseite</a>
+  </div>
+</header>
+
+<main class="wrap legal">
+  <h1>Badezimmer und Duschen</h1>
+  <div class="legal-img"><img src="assets/img/svc_bad.jpg" alt="Plattenarbeiten im Badezimmer" width="800" height="600" loading="lazy"></div>
+  <p>Nassräume sind ein Schwerpunkt bei uns. Wir verlegen Boden- und Wandplatten in Bad und Dusche inklusive Abdichtung und Gefälle zum Ablauf.</p>
+  <p class="svc-steps"><b>So läuft das ab:</b> Abdichtung prüfen oder erneuern <span class="arrow" aria-hidden="true">→</span> Gefälle einmessen <span class="arrow" aria-hidden="true">→</span> Platten verlegen und verfugen</p>
+
+  <div id="refBox"></div>
+
+  <div class="cta-row">
+    <a href="index.html#offerte" class="btn btn-gold">Offerte anfordern <span class="arrow" aria-hidden="true">→</span></a>
+    <a href="leistungen.html" class="btn btn-ghost">Alle Leistungen</a>
+  </div>
+</main>
+
+<footer class="legal-foot">© 2026 S.B. Plattenleger GmbH · Malters · <a href="kontakt.html" style="color:inherit">Kontakt</a> · <a href="impressum.html" style="color:inherit">Impressum</a></footer>
+
+<script>
+(() => {
+  const esc = (s) => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  const TAG = "Bad";
+  fetch('projects.json', { cache: 'no-store' })
+    .then(r => { if (!r.ok) throw new Error('x'); return r.json(); })
+    .then(data => {
+      const projekte = (Array.isArray(data.projekte) ? data.projekte : []).filter(p => TAG && p.tag === TAG);
+      const box = document.getElementById('refBox');
+      if (projekte.length) {
+        box.innerHTML = '<p class="ex-label">Beispiel aus unseren Projekten</p><div class="ex-row">'
+          + projekte.slice(0, 2).map(p => (
+            '<a class="ex-tile" href="referenzen.html">'
+            + '<img src="' + esc(p.bild) + '" alt="' + esc(p.alt || p.titel) + '" loading="lazy">'
+            + '<span>' + esc(p.titel) + '</span></a>'
+          )).join('') + '</div>';
+      } else {
+        box.innerHTML = '<p class="ex-empty">Referenzbeispiele für diesen Bereich folgen. <a href="referenzen.html">Alle Referenzen ansehen →</a></p>';
+      }
+    })
+    .catch(() => {});
+})();
+</script>
+</body>
+</html>
