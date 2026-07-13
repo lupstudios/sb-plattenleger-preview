@@ -102,6 +102,9 @@ h3{font-size:21px;font-weight:700}
 .tlink:hover{color:var(--gold-light)}
 .tlink .arrow{transition:transform .3s var(--ease-out)}
 .tlink:hover .arrow{transform:translateX(4px)}
+.svc-links{display:flex;flex-direction:column;gap:2px}
+.tlink-sub{min-height:auto;font-size:13px;font-weight:500;color:var(--muted)}
+.tlink-sub:hover{color:var(--gold)}
 
 /* ---------- Reveal system ---------- */
 [data-rv]{opacity:0;transform:translateY(34px);transition:opacity var(--dur-in) var(--ease-out),transform var(--dur-in) var(--ease-out)}
@@ -336,6 +339,10 @@ body.loaded .e-5{transition-delay:1.15s}
 .legal li::before{content:"";position:absolute;left:0;top:.62em;width:7px;height:7px;transform:rotate(45deg);background:var(--gold);opacity:.7}
 .legal a{color:var(--gold-light)}
 .legal a:hover{text-decoration:underline}
+.legal .svc-steps{margin-top:14px;font-size:14px;color:var(--muted)}
+.legal .svc-steps b{color:var(--gold-light);font-weight:600}
+.legal .svc-steps .arrow{margin:0 3px;color:var(--gold)}
+.legal .svc-cta{display:flex;flex-wrap:wrap;gap:24px;margin-top:14px}
 .legal .stand{margin-top:48px;font-size:13px}
 .legal .cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
 .legal .cta-row .btn{width:auto}
