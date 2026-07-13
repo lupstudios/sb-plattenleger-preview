@@ -15,30 +15,109 @@
 </head>
 <body>
 
-<header class="legal-head">
-  <div class="wrap">
-    <a href="index.html" aria-label="Zur Startseite">
-      <img src="assets/img/logo-sw.webp" alt="S.B. Plattenleger GmbH" width="130" height="38">
+<div class="ambient" aria-hidden="true">
+  <div class="blob blob-a"></div>
+  <div class="blob blob-b"></div>
+  <div class="raster"></div>
+</div>
+<div class="progress" aria-hidden="true"><span id="progressBar"></span></div>
+
+<header id="header">
+  <div class="wrap nav">
+    <a href="index.html" class="logo" aria-label="S.B. Plattenleger Startseite">
+      <img src="assets/img/logo-sw.webp" alt="S.B. Plattenleger GmbH" width="150" height="44">
     </a>
-    <a href="index.html" class="legal-back">Zurück zur Startseite</a>
+    <nav aria-label="Hauptnavigation">
+      <ul class="nav-links" id="navLinks">
+        <li><a href="leistungen.html">Leistungen</a></li>
+        <li><a href="index.html#ablauf">Ablauf</a></li>
+        <li><a href="referenzen.html">Referenzen</a></li>
+        <li><a href="index.html#stellen">Stellen</a></li>
+        <li><a href="index.html#ueber">Über uns</a></li>
+        <li class="nav-mobile-cta"><a href="index.html#offerte">Offerte anfordern</a></li>
+      </ul>
+    </nav>
+    <div class="nav-cta">
+      <a href="tel:0791977635" class="nav-phone">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        079 197 76 35
+      </a>
+      <a href="index.html#offerte" class="btn btn-gold btn-sm">Offerte anfordern</a>
+      <button class="burger" id="burger" aria-label="Menü öffnen" aria-expanded="false" aria-controls="navLinks"><span></span><span></span><span></span></button>
+    </div>
   </div>
 </header>
 
-<main class="wrap legal">
-  <h1>Grossformatplatten</h1>
-  <div class="legal-img"><img src="assets/img/svc_grossformat.jpg" alt="Verlegung von Grossformatplatten" width="800" height="600" loading="lazy"></div>
-  <p>Grossformatplatten wirken ruhig und modern, sind aber anspruchsvoll in der Verlegung. Wir haben die Erfahrung und das nötige Werkzeug dafür.</p>
-  <p class="svc-steps"><b>So läuft das ab:</b> Untergrund exakt ausrichten <span class="arrow" aria-hidden="true">→</span> Platten mit dem Vakuumheber setzen <span class="arrow" aria-hidden="true">→</span> Fugenbild kontrollieren</p>
+<main id="main">
 
-  <div id="refBox"></div>
-
-  <div class="cta-row">
-    <a href="index.html#offerte" class="btn btn-gold">Offerte anfordern <span class="arrow" aria-hidden="true">→</span></a>
-    <a href="leistungen.html" class="btn btn-ghost">Alle Leistungen</a>
+<section class="svc-hero">
+  <div class="svc-hero-media img-grade"><img src="assets/img/svc_grossformat.jpg" alt="Verlegung von Grossformatplatten" fetchpriority="high"></div>
+  <div class="svc-hero-scrim" aria-hidden="true"></div>
+  <div class="wrap svc-hero-inner" data-rv>
+    <p class="eyebrow"><span class="rule"></span><a href="leistungen.html">Leistungen</a></p>
+    <h1>Grossformatplatten</h1>
+    <p class="lead">Grossformatplatten wirken ruhig und modern, sind aber anspruchsvoll in der Verlegung. Wir haben die Erfahrung und das nötige Werkzeug dafür.</p>
+    <div class="hero-actions">
+      <a href="index.html#offerte" class="btn btn-gold">Offerte anfordern <span class="arrow" aria-hidden="true">→</span></a>
+      <a href="leistungen.html" class="btn btn-ghost">Alle Leistungen</a>
+    </div>
   </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <header class="sec-head" data-rv>
+      <p class="eyebrow"><span class="rule"></span>So läuft das ab</p>
+      <h2>Schritt für <em>Schritt.</em></h2>
+    </header>
+    <div class="svc-flow-steps" data-rv>
+      <div class="svc-flow-step"><span class="dia" aria-hidden="true"><b>1</b></span><p>Untergrund exakt ausrichten</p></div>
+      <div class="svc-flow-step"><span class="dia" aria-hidden="true"><b>2</b></span><p>Platten mit dem Vakuumheber setzen</p></div>
+      <div class="svc-flow-step"><span class="dia" aria-hidden="true"><b>3</b></span><p>Fugenbild kontrollieren</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="refSection">
+  <div class="wrap">
+    <header class="sec-head" data-rv>
+      <p class="eyebrow"><span class="rule"></span>Referenzen</p>
+      <h2 id="refHeading">Beispiele aus unseren <em>Projekten.</em></h2>
+    </header>
+    <div id="refBody" data-rv></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <header class="sec-head" data-rv>
+      <p class="eyebrow"><span class="rule"></span>Weitere Leistungen</p>
+      <h2>Auch das gehört <em>dazu.</em></h2>
+    </header>
+    <div class="svc-more-row" data-rv>
+      <a href="naturstein-mosaik.html">Naturstein und Mosaik <span class="arrow" aria-hidden="true">→</span></a>
+      <a href="reparatur-ausbesserung.html">Reparatur- und Ausbesserungsarbeiten <span class="arrow" aria-hidden="true">→</span></a>
+      <a href="umbauten-renovationen.html">Umbauten und Renovationen <span class="arrow" aria-hidden="true">→</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="section svc-cta-final">
+  <div class="wrap" data-rv>
+    <h2>Bereit für Ihr <em>Projekt?</em></h2>
+    <p class="lead">Schildern Sie uns Ihr Vorhaben, wir melden uns und klären die Details.</p>
+    <div class="cta-row">
+      <a href="index.html#offerte" class="btn btn-gold">Offerte anfordern <span class="arrow" aria-hidden="true">→</span></a>
+      <a href="tel:0791977635" class="btn btn-ghost">079 197 76 35 anrufen</a>
+    </div>
+  </div>
+</section>
+
 </main>
 
 <footer class="legal-foot">© 2026 S.B. Plattenleger GmbH · Malters · <a href="kontakt.html" style="color:inherit">Kontakt</a> · <a href="impressum.html" style="color:inherit">Impressum</a></footer>
+
+<script src="sub.js" defer></script>
 
 <script>
 (() => {
@@ -48,16 +127,17 @@
     .then(r => { if (!r.ok) throw new Error('x'); return r.json(); })
     .then(data => {
       const projekte = (Array.isArray(data.projekte) ? data.projekte : []).filter(p => TAG && p.tag === TAG);
-      const box = document.getElementById('refBox');
+      const box = document.getElementById('refBody');
       if (projekte.length) {
-        box.innerHTML = '<p class="ex-label">Beispiel aus unseren Projekten</p><div class="ex-row">'
+        box.innerHTML = '<div class="ex-row">'
           + projekte.slice(0, 2).map(p => (
             '<a class="ex-tile" href="referenzen.html">'
             + '<img src="' + esc(p.bild) + '" alt="' + esc(p.alt || p.titel) + '" loading="lazy">'
             + '<span>' + esc(p.titel) + '</span></a>'
           )).join('') + '</div>';
       } else {
-        box.innerHTML = '<p class="ex-empty">Referenzbeispiele für diesen Bereich folgen. <a href="referenzen.html">Alle Referenzen ansehen →</a></p>';
+        document.getElementById('refHeading').innerHTML = 'Beispiele <em>folgen.</em>';
+        box.innerHTML = '<p class="ex-empty">Für diesen Bereich stellen wir laufend neue Referenzfotos online. <a href="referenzen.html">Alle Referenzen ansehen →</a></p>';
       }
     })
     .catch(() => {});
