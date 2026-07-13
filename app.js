@@ -46,35 +46,7 @@ if ('IntersectionObserver' in window) {
   document.querySelectorAll('[data-rv]').forEach(el => io.observe(el));
 } else {
   document.querySelectorAll('[data-rv]').forEach(el => el.classList.add('in'));
-  document.querySelectorAll('.statement-line .w').forEach(w => w.classList.add('on'));
   const tlEl = document.getElementById('ablaufTimeline'); if (tlEl) tlEl.classList.add('run');
-}
-
-// statement: Wort-fuer-Wort-Reveal
-const stmt = document.getElementById('statementLine');
-if (stmt) {
-  const split = (node) => {
-    [...node.childNodes].forEach(ch => {
-      if (ch.nodeType === 3) {
-        const frag = document.createDocumentFragment();
-        ch.textContent.split(/(\s+)/).forEach(part => {
-          if (!part) return;
-          if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(part)); return; }
-          const s = document.createElement('span'); s.className = 'w'; s.textContent = part; frag.appendChild(s);
-        });
-        node.replaceChild(frag, ch);
-      } else if (ch.nodeType === 1) split(ch);
-    });
-  };
-  split(stmt);
-  const words = [...stmt.querySelectorAll('.w')];
-  const sIO = new IntersectionObserver((es) => {
-    es.forEach(e => {
-      if (!e.isIntersecting) return; sIO.unobserve(stmt);
-      words.forEach((w, i) => setTimeout(() => w.classList.add('on'), REDUCE ? 0 : 40 * i));
-    });
-  }, { threshold: .5 });
-  sIO.observe(stmt);
 }
 
 // count up
