@@ -27,6 +27,62 @@
       "text": "Fassadenprojekt in Malters, bei uns im Dorf.",
       "bild": "assets/img/ref_malters.webp",
       "alt": "Fassade mit Platten"
+    },
+    {
+      "titel": "Bad in Marmor-Optik",
+      "tag": "Bad",
+      "text": "Grossformatige Feinsteinzeugplatten in Marmor-Optik, Boden und Wand aus einem Guss verlegt.",
+      "bild": "assets/img/ref_bad_marmor.webp",
+      "alt": "Badezimmer komplett in Marmor-Optik verplattet, Boden und Wand"
+    },
+    {
+      "titel": "Neubau mit Einfahrt und Carport",
+      "tag": "Neubau",
+      "text": "Plattenarbeiten im Aussen- und Eingangsbereich eines Mehrfamilienhauses.",
+      "bild": "assets/img/ref_neubau_carport.webp",
+      "alt": "Einfahrt und Carport eines Neubaus mit verlegten Platten"
+    },
+    {
+      "titel": "Badsanierung im Bestand",
+      "tag": "Renovation",
+      "text": "Rückbau und Neuverlegung im Rahmen einer Badsanierung, alt trifft neu.",
+      "bild": "assets/img/ref_renovation_bad.webp",
+      "alt": "Badezimmer während einer Sanierung, alte und neue Platten im Übergang"
+    },
+    {
+      "titel": "Natursteinverkleidung an der Gebäudeecke",
+      "tag": "Naturstein",
+      "text": "Riemchen in Natursteinoptik, sauber und fugenbündig um die Kante geführt.",
+      "bild": "assets/img/ref_naturstein.webp",
+      "alt": "Natursteinriemchen an einer Gebäudeecke"
+    },
+    {
+      "titel": "Wandverlegung mit Nivelliersystem",
+      "tag": "Boden & Wand",
+      "text": "Grossformatige Wandplatten, exakt ausgerichtet mit dem Nivelliersystem.",
+      "bild": "assets/img/ref_bodenwand.webp",
+      "alt": "Wandplatten werden mit Nivelliersystem verlegt"
+    },
+    {
+      "titel": "Grossflächige Bodenverlegung",
+      "tag": "Grossformat",
+      "text": "Grossformatplatten in einer Halle verlegt, für hohe Beanspruchung ausgelegt.",
+      "bild": "assets/img/svc_grossformat.jpg",
+      "alt": "Grossformatplatten in einer Halle, grossflächig verlegt"
+    },
+    {
+      "titel": "Boden für Küche und Wohnbereich",
+      "tag": "Küche",
+      "text": "Fliesen in Holzoptik für den offenen Koch- und Wohnbereich.",
+      "bild": "assets/img/svc_kueche.jpg",
+      "alt": "Boden in Holzoptik in Küche und Wohnbereich"
+    },
+    {
+      "titel": "Reparatur- und Sanierungsbedarf",
+      "tag": "Reparatur",
+      "text": "Nicht jede Situation braucht eine Neuverlegung. Oft reicht die gezielte Ausbesserung.",
+      "bild": "assets/img/ref_reparatur.webp",
+      "alt": "Altes Bad mit schadhaften Fugen vor der Sanierung"
     }
   ]
 }
